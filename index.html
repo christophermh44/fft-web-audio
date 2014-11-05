@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<style type="text/css">
+html,
+body {
+	display: inline-block;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+#audio {
+	display: none;
+}
+
+canvas {
+	background: black;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.ball-wrapper {
+	display: table;
+	height: 100%;
+	position: absolute;
+	width: 50%;
+	z-index: 3;
+}
+
+.ball {
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
+	width: 100%;
+	text-align: center;
+}
+
+.ball-inner {
+	background: white;
+	background-position: center center;
+	background-size: cover;
+	border-radius: 6em;
+	display: inline-block;
+	height: 12em;
+	width: 12em;
+}
+
+.tags {
+	position: absolute;
+	z-index: 2;
+	font: 3.25em Arial, sans-serif;
+	color: white;
+	line-height: 1.15em;
+	letter-spacing: .05em;
+	top: 50%;
+	margin-top: -4.65%;
+	left: 40%;
+}
+
+.bar {
+	border-top: 1px solid white;
+	display: inline-block;
+	height: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	z-index: 1;
+}
+</style>
+</head>
+<body>
+	<div id="audio"></div>
+	<canvas id="canvas"></canvas>
+	<div class="ball-wrapper">
+		<div class="ball">
+			<div class="ball-inner"></div>
+		</div>
+	</div>
+	<div class="bar"></div>
+	<div class="tags">
+		<div class="artist"></div>
+		<div class="title"></div>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>
