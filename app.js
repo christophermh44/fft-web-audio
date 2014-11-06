@@ -33,11 +33,12 @@
 	;
 
 	/** FONCTIONS **/
-	var getArtistPicture = function(artist, cb) {
-		artist = artist.split(' & ')[0];
-		var url = 'https://api.spotify.com/v1/search?q=' + encodeURIComponent(artist) + '&type=artist&limit=1';
+	var getArtistPicture = function(artist, title, cb) {
+		artist = artist.split(' & ').join(' ');
+		var url = 'https://api.spotify.com/v1/search?q=' + encodeURIComponent(artist) + '%20' + encodeURIComponent(title) + '&type=track&limit=1';
+		console.log(url)
 		$.getJSON(url, function(data){
-			var albumArt = data.artists.items[0].images[0];
+			var albumArt = data.tracks.items[0].album.images[0];
 			cb(albumArt);
 		});
 	};
@@ -57,7 +58,7 @@
 				$('.tags .title').text(title);
 				getArtist(function(artist) {
 					$('.tags .artist').text(artist);
-					albumArt = getArtistPicture(artist, function(albumArt) {
+					albumArt = getArtistPicture(artist, title, function(albumArt) {
 						$('.ball-inner').css('background-image', 'url(' + albumArt.url + ')');
 					});
 				});
